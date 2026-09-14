@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research and teaching portfolio of Dr. Adiba Yaseen, an AI and machine learning researcher, university lecturer, and computational biologist based in Riyadh, Saudi Arabia.">
+  <meta name="theme-color" content="#071724">
+  <title>Dr. Adiba Yaseen | AI, Machine Learning &amp; Computational Biology</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071724'/%3E%3Cpath d='M16 46 29 15h7l13 31h-8l-3-8H26l-3 8h-7Zm13-15h7l-3.5-10L29 31Z' fill='%234bd9c8'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #10212d;
+      --muted: #5e6f79;
+      --paper: #f6fafb;
+      --surface: #ffffff;
+      --navy: #071724;
+      --navy-soft: #0c2637;
+      --teal: #10a99a;
+      --teal-dark: #087a71;
+      --cyan: #72e3d6;
+      --line: #dce8eb;
+      --shadow: 0 22px 55px rgba(6, 27, 39, 0.10);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+    .skip-link {
+      position: fixed; left: 1rem; top: -5rem; z-index: 100;
+      background: var(--surface); color: var(--navy); padding: .7rem 1rem; border-radius: 10px;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(7, 23, 36, .93);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 2rem)); margin: 0 auto;
+      min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 1.25rem;
+    }
+    .brand { color: white; text-decoration: none; font-weight: 800; letter-spacing: -.03em; }
+    .brand span { color: var(--cyan); }
+    .nav { display: flex; align-items: center; gap: 1.3rem; }
+    .nav a { color: #c7d8df; text-decoration: none; font-size: .86rem; font-weight: 700; }
+    .nav a:hover { color: white; }
+    .nav .nav-cta { color: var(--navy); background: var(--cyan); padding: .45rem .8rem; border-radius: 999px; }
+
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 24%, rgba(114,227,214,.17), transparent 24rem),
+        linear-gradient(135deg, var(--navy) 0%, #0a2d3e 58%, #083c43 100%);
+      color: white;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; opacity: .22; pointer-events: none;
+      background-image:
+        radial-gradient(circle at center, rgba(114,227,214,.9) 0 2px, transparent 2.5px),
+        linear-gradient(120deg, transparent 48%, rgba(114,227,214,.28) 49%, rgba(114,227,214,.28) 50%, transparent 51%);
+      background-size: 90px 90px, 180px 155px;
+      mask-image: linear-gradient(90deg, transparent 8%, black 72%);
+    }
+    .hero-inner {
+      position: relative; width: min(var(--max), calc(100% - 2rem)); margin: 0 auto;
+      min-height: 640px; padding: 6.5rem 0 5rem; display: grid; grid-template-columns: 1.2fr .8fr; gap: 5rem; align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .55rem;
+      color: var(--cyan); text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; font-weight: 800;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: currentColor; }
+    h1, h2, h3 { margin-top: 0; line-height: 1.12; }
+    h1 { margin: 1.2rem 0 1rem; max-width: 780px; font-size: clamp(3rem, 7vw, 5.9rem); letter-spacing: -.065em; }
+    h1 span { color: var(--cyan); }
+    .hero-role { max-width: 760px; margin: 0; color: #d5e4e8; font-size: clamp(1.05rem, 2vw, 1.32rem); line-height: 1.55; }
+    .location { margin: 1.1rem 0 0; color: #9fc2ca; font-weight: 650; }
+    .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+      min-height: 48px; padding: .65rem 1.1rem; border-radius: 999px; text-decoration: none; font-weight: 800;
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: var(--cyan); color: var(--navy); }
+    .button.secondary { color: white; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.05); }
+    .button svg { width: 18px; height: 18px; }
+
+    .signal-card {
+      position: relative; padding: 1.8rem; border: 1px solid rgba(255,255,255,.13); border-radius: 26px;
+      background: linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.035));
+      box-shadow: 0 30px 70px rgba(0,0,0,.2); backdrop-filter: blur(10px);
+    }
+    .signal-card::after {
+      content: ""; position: absolute; width: 100px; height: 100px; right: -18px; top: -20px; border-radius: 50%;
+      border: 1px solid rgba(114,227,214,.35); box-shadow: inset 0 0 0 22px rgba(114,227,214,.04);
+    }
+    .signal-label { color: var(--cyan); font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
+    .signal-card h2 { margin: .8rem 0 1.5rem; font-size: 1.35rem; letter-spacing: -.025em; }
+    .signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.12); }
+    .signal { background: rgba(7,23,36,.72); padding: 1rem; }
+    .signal strong { display: block; color: white; font-size: 1.45rem; }
+    .signal span { display: block; color: #a8c1c8; font-size: .78rem; line-height: 1.4; }
+
+    main { overflow: clip; }
+    .section { padding: 6.2rem 0; }
+    .section.alt { background: #eef5f6; }
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    .section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 4rem; margin-bottom: 3rem; align-items: end; }
+    .section-number { color: var(--teal); font-weight: 850; font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; }
+    h2 { margin-bottom: 0; font-size: clamp(2.15rem, 4vw, 3.7rem); letter-spacing: -.05em; color: var(--navy); }
+    .section-intro { max-width: 670px; margin: 0; color: var(--muted); font-size: 1.05rem; }
+
+    .profile-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 3.5rem; align-items: start; }
+    .profile-copy { font-size: 1.15rem; color: #304651; }
+    .profile-copy p:first-child { margin-top: 0; }
+    .skills-panel { padding: 2rem; background: var(--navy); color: white; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .skills-panel h3 { margin-bottom: 1.2rem; font-size: 1.2rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .tag { padding: .42rem .7rem; border: 1px solid rgba(114,227,214,.23); border-radius: 999px; background: rgba(114,227,214,.08); color: #d8f8f4; font-size: .78rem; font-weight: 700; }
+
+    .case-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
+    .case {
+      grid-column: span 6; min-height: 420px; padding: 2rem; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--surface); box-shadow: 0 14px 38px rgba(6,34,47,.055); display: flex; flex-direction: column;
+    }
+    .case.featured { grid-column: span 7; background: var(--navy); color: white; border-color: transparent; }
+    .case.side { grid-column: span 5; }
+    .case-top { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+    .status { display: inline-flex; flex: 0 0 auto; padding: .28rem .58rem; border-radius: 999px; background: #dff6f2; color: var(--teal-dark); font-size: .72rem; font-weight: 850; letter-spacing: .04em; text-transform: uppercase; }
+    .status.preprint { background: #fff0cf; color: #835d08; }
+    .featured .status { background: rgba(114,227,214,.14); color: var(--cyan); }
+    .case h3 { margin: .8rem 0 1rem; font-size: 1.58rem; letter-spacing: -.035em; color: var(--navy); }
+    .case.featured h3 { color: white; }
+    .case p { margin: 0 0 1rem; color: var(--muted); }
+    .case.featured p { color: #c6d9df; }
+    .evidence { display: grid; grid-template-columns: repeat(3, 1fr); gap: .65rem; margin: auto 0 1.3rem; }
+    .evidence div { padding: .8rem; border-top: 2px solid var(--teal); background: #f2f8f8; }
+    .featured .evidence div { background: rgba(255,255,255,.06); border-color: var(--cyan); }
+    .evidence strong { display: block; font-size: 1.08rem; color: var(--navy); }
+    .featured .evidence strong { color: white; }
+    .evidence span { color: var(--muted); font-size: .7rem; line-height: 1.3; display: block; }
+    .featured .evidence span { color: #a9c1c8; }
+    .case-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .text-link { color: var(--teal-dark); font-weight: 800; text-underline-offset: 4px; }
+    .featured .text-link { color: var(--cyan); }
+
+    .timeline { position: relative; display: grid; gap: 1rem; }
+    .timeline::before { content: ""; position: absolute; left: 18px; top: 16px; bottom: 16px; width: 2px; background: var(--line); }
+    .timeline-item { position: relative; padding: 1.5rem 1.5rem 1.5rem 4rem; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; }
+    .timeline-item::before { content: ""; position: absolute; left: 11px; top: 29px; width: 14px; height: 14px; border-radius: 50%; background: var(--teal); border: 4px solid var(--paper); }
+    .timeline-item h3 { margin: 0 0 .3rem; font-size: 1.15rem; color: var(--navy); }
+    .meta { color: var(--teal-dark); font-size: .84rem; font-weight: 800; }
+    .timeline-item p { margin: .55rem 0 0; color: var(--muted); }
+
+    .teaching-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 3rem; }
+    .course-list { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; list-style: none; padding: 0; margin: 1.2rem 0 0; }
+    .course-list li { padding: .8rem .9rem; border-left: 3px solid var(--teal); background: white; color: #314650; }
+    .teaching-card { background: var(--navy); color: white; padding: 2rem; border-radius: var(--radius); }
+    .teaching-card h3 { color: var(--cyan); font-size: 1.35rem; }
+    .teaching-card p { color: #c9dadd; }
+
+    .pub-list { display: grid; gap: .85rem; counter-reset: pubs; }
+    .publication {
+      counter-increment: pubs; position: relative; display: grid; grid-template-columns: 52px 1fr auto; gap: 1rem; align-items: start;
+      padding: 1.25rem 1.3rem; border: 1px solid var(--line); border-radius: 16px; background: white;
+    }
+    .publication::before { content: counter(pubs, decimal-leading-zero); color: var(--teal); font-size: .8rem; font-weight: 850; letter-spacing: .08em; padding-top: .2rem; }
+    .publication p { margin: 0; color: #3f525c; }
+    .publication a { color: var(--teal-dark); font-weight: 800; text-underline-offset: 3px; }
+    .publication .status { margin-top: .15rem; }
+
+    .open-source { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .repo { position: relative; overflow: hidden; min-height: 260px; padding: 1.6rem; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); }
+    .repo::after { content: "</>"; position: absolute; right: 1rem; bottom: -.4rem; color: rgba(16,169,154,.09); font-size: 5rem; font-weight: 900; letter-spacing: -.15em; }
+    .repo h3 { margin: .6rem 0; color: var(--navy); }
+    .repo p { margin: 0 0 1rem; color: var(--muted); font-size: .92rem; }
+
+    .contact-band { background: var(--navy); color: white; }
+    .contact-inner { padding: 5rem 0; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+    .contact-band h2 { color: white; max-width: 770px; }
+    .contact-band p { color: #b9cfd4; max-width: 680px; }
+    .contact-links { display: grid; gap: .75rem; min-width: 260px; }
+    .contact-links a { color: white; text-decoration: none; padding: .8rem 1rem; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; font-weight: 750; }
+    .contact-links a:hover { border-color: var(--cyan); color: var(--cyan); }
+    footer { background: #04111a; color: #88a4ad; padding: 1.6rem 0; font-size: .78rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; }
+
+    @media (max-width: 900px) {
+      .nav a:not(.nav-cta) { display: none; }
+      .hero-inner, .profile-grid, .teaching-grid, .contact-inner { grid-template-columns: 1fr; }
+      .hero-inner { min-height: auto; padding: 5rem 0 4rem; gap: 3rem; }
+      .signal-card { max-width: 640px; }
+      .section-head { grid-template-columns: 1fr; gap: 1rem; }
+      .case, .case.featured, .case.side { grid-column: 1 / -1; }
+      .open-source { grid-template-columns: 1fr; }
+      .contact-links { min-width: 0; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .topbar-inner { min-height: 60px; }
+      .hero-inner { padding-top: 4rem; }
+      h1 { font-size: clamp(2.7rem, 15vw, 4.1rem); }
+      .section { padding: 4.4rem 0; }
+      .signal-grid, .course-list, .evidence { grid-template-columns: 1fr; }
+      .case { padding: 1.4rem; min-height: 0; }
+      .case-top { display: block; }
+      .publication { grid-template-columns: 38px 1fr; }
+      .publication .status { grid-column: 2; justify-self: start; }
+      footer .wrap { display: block; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+    @media print {
+      .topbar, .actions, .contact-band, footer { display: none; }
+      .hero { background: white; color: var(--ink); }
+      .hero::before { display: none; }
+      .hero-inner { min-height: 0; padding: 2rem 0; display: block; }
+      .hero-role, .location { color: var(--ink); }
+      .signal-card { margin-top: 2rem; color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
+      .signal { background: white; }
+      .signal strong, .signal span, .signal-card h2 { color: var(--ink); }
+      .section { padding: 2rem 0; break-inside: avoid; }
+      .case, .timeline-item, .publication, .repo { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">Adiba<span>Yaseen</span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="Adiba_Yaseen_Curriculum_Vitae_Riyadh.pdf" download>Download CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Riyadh · Saudi Arabia</div>
+        <h1>Dr. Adiba <span>Yaseen</span></h1>
+        <p class="hero-role">AI and machine learning researcher, computational biologist, and university lecturer advancing rigorous, reproducible methods for biomedical discovery.</p>
+        <p class="location">PhD in Computer Science · Final CGPA 3.92/4.00</p>
+        <div class="actions">
+          <a class="button primary" href="#research">Explore research
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m13.2 5.3 5.9 5.9a1.1 1.1 0 0 1 0 1.6l-5.9 5.9-1.4-1.4 4.2-4.3H5v-2h11l-4.2-4.3 1.4-1.4Z"/></svg>
+          </a>
+          <a class="button secondary" href="mailto:adibayaseen@gmail.com">Email Adiba</a>
+          <a class="button secondary" href="https://github.com/adibayaseen" target="_blank" rel="noreferrer">GitHub profile</a>
+        </div>
+      </div>
+      <aside class="signal-card" aria-label="Professional profile summary">
+        <div class="signal-label">Research profile</div>
+        <h2>Machine learning at the intersection of proteins, peptides, and therapeutic compounds.</h2>
+        <div class="signal-grid">
+          <div class="signal"><strong>4</strong><span>Peer-reviewed publications</span></div>
+          <div class="signal"><strong>3</strong><span>Public research repositories</span></div>
+          <div class="signal"><strong>~5 years</strong><span>Higher-education teaching</span></div>
+          <div class="signal"><strong>2018–2024</strong><span>PhD research period</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-number">01 · Profile</div><h2>Research with real-world evaluation in mind.</h2></div>
+          <p class="section-intro">Adiba’s work connects machine learning, bioinformatics, and molecular data. Her research moves from structural protein analysis to peptide safety, compound–protein screening, and graph neural networks for targeted inhibition.</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-copy">
+            <p>Her projects emphasize reliable evidence: similarity-controlled splits, nonredundant cross-validation, independent external datasets, experimentally verified negatives, and ranking measures designed for large screening libraries.</p>
+            <p>Alongside research, she has taught artificial intelligence, machine learning, programming, object-oriented programming, databases, operating systems, networks, and information technology. She is positioned for university faculty and AI research opportunities in Riyadh and across Saudi Arabia.</p>
+          </div>
+          <aside class="skills-panel">
+            <h3>Core expertise</h3>
+            <div class="tags">
+              <span class="tag">Machine learning</span><span class="tag">Deep learning</span><span class="tag">Graph neural networks</span>
+              <span class="tag">Computational biology</span><span class="tag">Bioinformatics</span><span class="tag">AI-driven drug discovery</span>
+              <span class="tag">Protein interactions</span><span class="tag">Peptide safety</span><span class="tag">Binding affinity</span>
+              <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Python</span>
+              <span class="tag">SVM / SVR</span><span class="tag">Molecular representations</span><span class="tag">Rigorous model evaluation</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-number">02 · Selected research</div><h2>Evidence-led biomedical AI.</h2></div>
+          <p class="section-intro">Four connected case studies show the progression from classical structural features to contextual embeddings, screening-oriented metrics, and graph-based molecular learning.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case featured">
+            <div class="case-top"><div class="section-number">Therapeutic peptides</div><span class="status">Published · 2021</span></div>
+            <h3>HemoNet: predicting peptide hemolytic activity</h3>
+            <p>A neural framework combining contextual SeqVec peptide embeddings with SMILES-derived fingerprints for terminal modifications. The model supports L- and D-amino acids and evaluates generalization under stringent nonredundant and external tests.</p>
+            <div class="evidence">
+              <div><strong>≈88%</strong><span>AUC-ROC in the principal comparison</span></div>
+              <div><strong>72%</strong><span>External AUC-ROC for the 70% NR model</span></div>
+              <div><strong>4,939</strong><span>Hemolytic and nonhemolytic examples</span></div>
+            </div>
+            <div class="case-links"><a class="text-link" href="https://doi.org/10.1142/S0219720021500219" target="_blank" rel="noreferrer">Journal article</a><a class="text-link" href="https://github.com/adibayaseen/HemoNet" target="_blank" rel="noreferrer">Code &amp; data</a></div>
+          </article>
+
+          <article class="case side">
+            <div class="case-top"><div class="section-number">Drug screening</div><span class="status">Published · 2022</span></div>
+            <h3>Compound–protein interaction evaluation</h3>
+            <p>Designed realistic evaluation for CPI prediction by controlling train–test similarity, negative construction, and screening metrics. RFPP translates model output into the number of compounds screened before finding a known interaction.</p>
+            <div class="evidence">
+              <div><strong>85%</strong><span>Proteins with a known hit in the top 10</span></div>
+              <div><strong>≈908K</strong><span>Protein–drug pairs scored</span></div>
+              <div><strong>3,633</strong><span>FDA-approved drugs screened</span></div>
+            </div>
+            <div class="case-links"><a class="text-link" href="https://doi.org/10.1093/bioinformatics/btac496" target="_blank" rel="noreferrer">Bioinformatics article</a><a class="text-link" href="https://github.com/adibayaseen/HKRCPI" target="_blank" rel="noreferrer">HKRCPI repository</a></div>
+          </article>
+
+          <article class="case">
+            <div class="case-top"><div class="section-number">Protein complexes</div><span class="status preprint">Archived preprint · 2024</span></div>
+            <h3>Targeted protein-complex inhibitor prediction</h3>
+            <p>A graph neural network pipeline combines protein-complex structure with compound SMILES representations to predict inhibition of a specified protein–protein interaction. This work is an archived bioRxiv preprint and is not presented as peer-reviewed.</p>
+            <div class="evidence">
+              <div><strong>714</strong><span>Inhibitors represented</span></div>
+              <div><strong>23</strong><span>Protein complexes</span></div>
+              <div><strong>0.85</strong><span>Cross-validation AUC-ROC</span></div>
+            </div>
+            <div class="case-links"><a class="text-link" href="https://doi.org/10.1101/2024.08.23.609286" target="_blank" rel="noreferrer">Archived preprint</a><a class="text-link" href="https://github.com/adibayaseen/PPI-Inhibitors" target="_blank" rel="noreferrer">Code &amp; data</a></div>
+          </article>
+
+          <article class="case">
+            <div class="case-top"><div class="section-number">Binding affinity</div><span class="status">Published · 2018 &amp; 2020</span></div>
+            <h3>Protein binding-affinity prediction</h3>
+            <p>Classical machine-learning foundations in structural and sequence-based bioinformatics. The MS thesis studied 135 three-dimensional protein structures using SVM and SVR; related work progressed into peer-reviewed conference and journal publications.</p>
+            <div class="evidence">
+              <div><strong>135</strong><span>Protein structures in thesis research</span></div>
+              <div><strong>SVM / SVR</strong><span>Core predictive methods</span></div>
+              <div><strong>2</strong><span>Peer-reviewed outputs</span></div>
+            </div>
+            <div class="case-links"><a class="text-link" href="https://doi.org/10.1109/IBCAST.2018.8312222" target="_blank" rel="noreferrer">IBCAST paper</a><a class="text-link" href="https://doi.org/10.1186/s13040-020-00231-w" target="_blank" rel="noreferrer">ISLAND article</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="teaching">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-number">03 · Teaching</div><h2>Computer science education grounded in practice.</h2></div>
+          <p class="section-intro">Nearly five years of teaching across university and college appointments, combining lectures, laboratories, programming demonstrations, assessments, and student support.</p>
+        </div>
+        <div class="teaching-grid">
+          <div class="timeline">
+            <article class="timeline-item"><h3>Lecturer · The University of Lahore</h3><div class="meta">November 2020 – July 2024</div><p>Computer Science and Information Technology; courses included Artificial Intelligence, Machine Learning, programming, DBMS, operating systems, networks, and introductory IT.</p></article>
+            <article class="timeline-item"><h3>Lecturer · The University of Lahore</h3><div class="meta">September 2017 – June 2018</div><p>Programming Fundamentals I and Object-Oriented Programming in C++, with lectures, laboratory exercises, assessments, and foundational student support.</p></article>
+            <article class="timeline-item"><h3>Lecturer · Government Degree College for Women</h3><div class="meta">October 2015 – February 2016</div><p>Intermediate-level computer science instruction for Classes 11 and 12.</p></article>
+          </div>
+          <aside class="teaching-card">
+            <h3>Teaching areas</h3>
+            <p>Prepared to contribute to undergraduate and postgraduate teaching, student research supervision, interdisciplinary AI programs, and curriculum development.</p>
+            <ul class="course-list">
+              <li>Artificial Intelligence</li><li>Machine Learning</li><li>Programming Fundamentals</li><li>Object-Oriented Programming</li>
+              <li>Database Systems</li><li>Operating Systems</li><li>Computer Networks</li><li>Bioinformatics</li>
+              <li>Deep Learning</li><li>Research Methods</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-number">04 · Education</div><h2>Computer science and engineering foundation.</h2></div>
+          <p class="section-intro">Advanced study spans machine learning, bioinformatics, computational interactomics, biomolecular design, data mining, cyber security, and quantum programming.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item"><h3>PhD in Computer Science · PIEAS</h3><div class="meta">June 2018 – December 2024 · Final CGPA 3.92/4.00</div><p>Research focus: biomedical applications and machine learning.</p></article>
+          <article class="timeline-item"><h3>MS in Computer Science · PIEAS</h3><div class="meta">2016 – 2017 · CGPA 3.62/4.00</div><p>Bioinformatics and machine learning; 47 credits of coursework and 12 credits of thesis research.</p></article>
+          <article class="timeline-item"><h3>BS in Computer Engineering · UET Lahore</h3><div class="meta">2011 – 2015 · CGPA 3.351/4.00</div><p>Computer engineering foundation with emphasis on image processing, programming, systems, digital design, and artificial intelligence.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-number">05 · Publications</div><h2>Peer-reviewed work and archived research.</h2></div>
+          <p class="section-intro">Publication status is stated explicitly: four peer-reviewed outputs and one 2024 archived preprint.</p>
+        </div>
+        <div class="pub-list">
+          <article class="publication"><p>Yaseen, A., Abbasi, W. A., &amp; Minhas, F. U. A. A. (2018). Protein binding affinity prediction using support vector regression and interfacial features. <em>IBCAST</em>, 194–198. <a href="https://doi.org/10.1109/IBCAST.2018.8312222" target="_blank" rel="noreferrer">DOI</a></p><span class="status">Peer reviewed</span></article>
+          <article class="publication"><p>Abbasi, W. A., Yaseen, A., Hassan, F. U., Andleeb, S., &amp; Minhas, F. U. A. A. (2020). ISLAND: in-silico proteins binding affinity prediction using sequence information. <em>BioData Mining</em>, 13, article 20. <a href="https://doi.org/10.1186/s13040-020-00231-w" target="_blank" rel="noreferrer">DOI</a></p><span class="status">Peer reviewed</span></article>
+          <article class="publication"><p>Yaseen, A., Gull, S., Akhtar, N., Amin, I., &amp; Minhas, F. (2021). HemoNet: Predicting hemolytic activity of peptides with integrated feature learning. <em>Journal of Bioinformatics and Computational Biology</em>, 19(5), 2150021. <a href="https://doi.org/10.1142/S0219720021500219" target="_blank" rel="noreferrer">DOI</a></p><span class="status">Peer reviewed</span></article>
+          <article class="publication"><p>Yaseen, A., Amin, I., Akhter, N., Ben-Hur, A., &amp; Minhas, F. (2022). Insights into performance evaluation of compound–protein interaction prediction methods. <em>Bioinformatics</em>, 38(Supplement 2), ii75–ii81. <a href="https://doi.org/10.1093/bioinformatics/btac496" target="_blank" rel="noreferrer">DOI</a></p><span class="status">Peer reviewed</span></article>
+          <article class="publication"><p>Yaseen, A., Roy, S., Akhter, N., Ben-Hur, A., &amp; Minhas, F. (2024). Predicting small-molecule inhibition of protein complexes. <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2024.08.23.609286" target="_blank" rel="noreferrer">DOI</a></p><span class="status preprint">Archived preprint</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="software">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-number">06 · Open research</div><h2>Public code, data, and reproducible workflows.</h2></div>
+          <p class="section-intro">Repositories connect publications with datasets, trained models, notebooks, evaluation scripts, clustering workflows, and supplementary results.</p>
+        </div>
+        <div class="open-source">
+          <article class="repo"><div class="section-number">Python · PyTorch</div><h3>HemoNet</h3><p>Peptide hemolytic-activity prediction, nonredundant evaluation, clustering, baselines, and model resources.</p><a class="text-link" href="https://github.com/adibayaseen/HemoNet" target="_blank" rel="noreferrer">View repository</a></article>
+          <article class="repo"><div class="section-number">Kernel methods · Screening</div><h3>HKRCPI</h3><p>Compound–protein interaction prediction, RFPP analysis, SuperDRUG2 screening, and supplementary experiments.</p><a class="text-link" href="https://github.com/adibayaseen/HKRCPI" target="_blank" rel="noreferrer">View repository</a></article>
+          <article class="repo"><div class="section-number">GNN · Molecular AI</div><h3>PPI Inhibitors</h3><p>Graph, SVM, and GearNet workflows with protein-complex data, compound features, trained models, and results.</p><a class="text-link" href="https://github.com/adibayaseen/PPI-Inhibitors" target="_blank" rel="noreferrer">View repository</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="wrap contact-inner">
+        <div><div class="section-number">Riyadh · Saudi Arabia</div><h2>Open to academic and research opportunities.</h2><p>University lecturer, assistant professor, AI/ML researcher, data science research, computational biology, bioinformatics, and AI-driven drug discovery roles.</p></div>
+        <div class="contact-links">
+          <a href="mailto:adibayaseen@gmail.com">adibayaseen@gmail.com</a>
+          <a href="tel:+966590899335">+966 59 089 9335</a>
+          <a href="Adiba_Yaseen_Curriculum_Vitae_Riyadh.pdf" download>Download curriculum vitae</a>
+          <a href="Adiba_Yaseen_Research_Teaching_Portfolio_Riyadh.pdf" download>Download research portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap"><span>© 2026 Adiba Yaseen</span><span>AI · Computational Biology · University Teaching</span></div></footer>
+</body>
+</html>
